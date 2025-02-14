@@ -4,6 +4,11 @@ SPEED (**SP**atial **E**pig**E**nomic data **D**enoising by deep learning), a de
 
 ![](docs/img/workflow.png "Overview")
 
+* Stage 1: Train the atlas-level single-cell data. 
+* Stage 2: Train the spatial epigenomic data based on single-cell prior information (optional), spatial coordinate information, and H&E staining image information (optional).
+
+* If high-quality single-cell data is unavailable, users can skip the first stage of training and train SPEED in the second stage without utilizing single-cell prior information.
+
 ## Getting started
 * [Requirements](#Requirements)
 * [Installation](#Installation)
