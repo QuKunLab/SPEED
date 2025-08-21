@@ -1,0 +1,20 @@
+name: SPEED
+channels:
+  - conda-forge
+  - defaults
+dependencies:
+  - cudatoolkit=11.3
+  - python=3.7
+  - pip
+  - pip:
+      - --index-url https://pypi.tuna.tsinghua.edu.cn/simple
+      - pandas
+      - numpy
+      - scipy
+      - tqdm
+      - scikit-learn
+      - scanpy==1.9
+      - safetensors==0.4.3
+      - timm==0.9.12
+      - torch==1.13
+      - torchvision==0.14

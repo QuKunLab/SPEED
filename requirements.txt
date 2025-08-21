@@ -1,0 +1,12 @@
+scanpy==1.9
+torch==1.13
+torchvision==0.14
+safetensors==0.4.3
+timm==0.9.12
+anndata
+numpy
+pandas
+tqdm
+scikit-learn
+scipy
+urllib3==1.26.16
