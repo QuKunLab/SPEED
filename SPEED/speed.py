@@ -46,7 +46,9 @@ class SPEED:
         - peak_name (str, optional): Name of the peak embedding variable in `adata_sc`. Default is 'peak_SPEED'. 
             This parameter is used if ``adata_sc`` is not None.
         - image_model (str, optional): Model for image feature extraction as input to SPEED. Must be one of 'Resnet50',
-            'UNI' or 'Prov-Gigapath'. This parameter is used if ``image`` is not None.
+            'UNI' or 'Prov-Gigapath'. You can use ``ResNet50`` directly. To use ``UNI``, download the model parameters from 
+            https://huggingface.co/MahmoodLab/UNI . To use ``Prov-Gigapath``, download the model parameters from 
+            https://huggingface.co/prov-gigapath/prov-gigapath. This parameter is applied only if ``image`` is not None.
         """
         
         if sparse.isspmatrix_csr(adata.X):
@@ -416,7 +418,7 @@ class SPEED:
         with torch.no_grad():
             coo_emb = []
             for i in tqdm(range(split)):
-                print(self.coo_mtx[(i*n):((i+1)*n),:].shape)
+                # print(self.coo_mtx[(i*n):((i+1)*n),:].shape)
                 coo_emb.append(model.CooEncoder(torch_slice(self.coo_mtx[(i*n):((i+1)*n),:],None).to(device)).cpu().detach().numpy())
             coo_emb = np.concatenate(coo_emb)
             self.coo_embedding = coo_emb

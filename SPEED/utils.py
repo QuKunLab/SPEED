@@ -113,7 +113,11 @@ def Encode_image_resnet(img, spatial, image_model):
     Parameters:
     - img (np.ndarray): The input image data in RGB format.
     - spatial (np.ndarray): The spatial coordinates of the spots.
-    
+    - image_model (str, optional): Model for image feature extraction as input to SPEED. Must be one of 'Resnet50',
+        'UNI' or 'Prov-Gigapath'. You can use ``ResNet50`` directly. To use ``UNI``, download the model parameters from 
+        https://huggingface.co/MahmoodLab/UNI . To use ``Prov-Gigapath``, download the model parameters from 
+        https://huggingface.co/prov-gigapath/prov-gigapath. 
+
     Returns:
         An array of the extracted image features.
     """
