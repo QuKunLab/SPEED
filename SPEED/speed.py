@@ -242,9 +242,9 @@ class SPEED:
             and single-cell data in stage 2. Default is 10. (Ignored during stage 1 training)
         - beta (float, optional): The importance of image information for spot embedding in stage 2. Default is 1. 
             (Ignored during stage 1 training)
-        - epoch_num (int, optional): Total number of epochs. Default is 300.
+        - epoch_num (int, optional): Total number of epochs. Default is 500.
         - epo_max (int, optional): Early stopping patience. If no improvement is observed on the validation set 
-            within `epo_max` epochs, training stops
+            within `epo_max` epochs, training stops. Default is 30.
         - val_epoch (int, optional): Validation interval (epochs). Default is 1.
         - device (torch.device, optional): Device to train on ('cuda' or 'cpu').
         - weight_decay (float, optional): Weight decay for optimizer. Default is 1e-3.
