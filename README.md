@@ -2,7 +2,7 @@
 # SPEED
 SPEED (**SP**atial **E**pig**E**nomic data **D**enoising by deep learning), a deep matrix factorization (DMF) framework using atlas level single cell data as prior and borrowing spatial location information for Spatial epigenomic data imputation and down-stream analysis
 
-This work has been published in *Nature Computational Science*. Click [here](10.1038/s43588-025-00941-3) to access the original paper.
+This work has been published in *Nature Computational Science*. Click [here](https://www.nature.com/articles/s43588-025-00941-3) to access the original paper.
 
 ![](docs/img/workflow.png "Overview")
 
