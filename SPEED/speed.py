@@ -203,6 +203,7 @@ class SPEED:
         self.model = SPEED_model(
             self.peak_features.shape[1], 
             self.cell_features.shape[1],
+            self.coo_mtx.shape[1] if self.is_spatial else None,
             h_peak_features=h_peak_f,
             h_cell_features=h_cell_f, 
             dim_img_features=self.img.shape[1], 

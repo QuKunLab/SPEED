@@ -62,6 +62,7 @@ class SPEED_model(nn.Module):
     Parameters:
     - cell_num (int): Number of cells/spots in the dataset.
     - peak_num (int): Number of peaks/features in the dataset.
+    - coo_num (int): Number of anchor points in the dataset.
     - h_peak_features (list of int): List of hidden layer sizes for the peak encoder.
     - h_cell_features (list of int): List of hidden layer sizes for the cell encoder.
     - dim_img_features (int): The dimension of the image features.
@@ -78,14 +79,14 @@ class SPEED_model(nn.Module):
     - is_spatial (bool, optional): Whether to use spatial information. Default is ``False``.
     - peak_train (bool, optional): Whether to train the peak encoder. Default is ``True``.
     """
-    def __init__(self, cell_num,peak_num, h_peak_features, h_cell_features, dim_img_features, emb_features, peak_batch_norm, peak_layer_norm, cell_batch_norm, cell_layer_norm,dropout_p=[0.4,0.4],eps=1e-8,weight1=None,weight0=None,cell_depth_mode=1,is_spatial=False,peak_train=True):
+    def __init__(self, cell_num,peak_num,coo_num, h_peak_features, h_cell_features, dim_img_features, emb_features, peak_batch_norm, peak_layer_norm, cell_batch_norm, cell_layer_norm,dropout_p=[0.4,0.4],eps=1e-8,weight1=None,weight0=None,cell_depth_mode=1,is_spatial=False,peak_train=True):
         super(SPEED_model, self).__init__()
         self.CellEncoder = Encoder(in_features=peak_num, h_features=h_cell_features, z_features=emb_features+cell_depth_mode, batch_norm=cell_batch_norm, layer_norm=cell_layer_norm,dropout_p=dropout_p[1])
         if peak_train:
             self.peakEncoder = Encoder(in_features=cell_num, h_features=h_peak_features, z_features=emb_features, batch_norm=peak_batch_norm, layer_norm=peak_layer_norm,dropout_p=dropout_p[0])
         if is_spatial:
             self.ImgEncoder = Encoder(in_features=dim_img_features, h_features=[512,128], z_features=emb_features, batch_norm=cell_batch_norm, layer_norm=cell_layer_norm,dropout_p=dropout_p[1])
-            self.CooEncoder = Encoder(in_features=cell_num, h_features=h_cell_features, z_features=emb_features, batch_norm=cell_batch_norm, layer_norm=cell_layer_norm,dropout_p=dropout_p[1])
+            self.CooEncoder = Encoder(in_features=coo_num, h_features=h_cell_features, z_features=emb_features, batch_norm=cell_batch_norm, layer_norm=cell_layer_norm,dropout_p=dropout_p[1])
         self.cell_depth_mode = cell_depth_mode
         self.eps = eps
         self.weight1 = weight1
